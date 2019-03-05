@@ -3,7 +3,7 @@
 let program = require('commander');
 let package = require('./package.json');
 let init = require('./bin/init');
-let list = require('./bin/list');
+// let list = require('./bin/list');
 
 program
   .version(package.version)

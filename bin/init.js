@@ -8,7 +8,6 @@ const fs = require('fs');
 const templateUrl = 'https://github.com/maohaolin/multi-page-app-template.git';
 
 module.exports = function(name) {
-
   co(generator(name));
 }
 
@@ -21,17 +20,15 @@ function* generator(name) {
     preloadedModule: true
   };
 
-  if (!temp.name) {
-    temp.name = yield prompt(chalk.green('ProjectName: '));
-    temp.author = yield prompt(chalk.green('Author: '));
-    temp.description = yield prompt(chalk.green('Description: '));
-    // temp.sass = yield prompt(chalk.green('Used sass:') + chalk.yellow('(Y/N) '));
-    // temp.preloadedModule = yield prompt(chalk.green('Preloaded module:') + chalk.yellow('(Y/N) '));
-    // temp.sass = boolEval(temp.sass);
-    // temp.preloadedModule = boolEval(temp.preloadedModule);
-    console.log(temp)
-    loadTemplate(temp);
-  }
+  temp.name = yield prompt(chalk.green('ProjectName:') + (name ? chalk.yellow(`<${name}> `) : ' '));
+  temp.author = yield prompt(chalk.green('Author: '));
+  temp.description = yield prompt(chalk.green('Description: '));
+  // temp.sass = yield prompt(chalk.green('Used sass:') + chalk.yellow('(Y/N) '));
+  // temp.preloadedModule = yield prompt(chalk.green('Preloaded module:') + chalk.yellow('(Y/N) '));
+  // temp.sass = boolEval(temp.sass);
+  // temp.preloadedModule = boolEval(temp.preloadedModule);
+  console.log(temp)
+  loadTemplate(temp);
 }
 
 async function loadTemplate(temp) {
